@@ -8,3 +8,13 @@ C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final
 C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project\110323103_final_project\obj\Debug\110323103_final_project.csproj.CoreCompileInputs.cache
 C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project\110323103_final_project\obj\Debug\110323103_final_project.exe
 C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project\110323103_final_project\obj\Debug\110323103_final_project.pdb
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\bin\Debug\110323103_final_project.exe.config
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\bin\Debug\110323103_final_project.exe
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\bin\Debug\110323103_final_project.pdb
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\110323103_final_project.csprojAssemblyReference.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\_110323103_final_project.MainForm.resources
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\_110323103_final_project.Properties.Resources.resources
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\110323103_final_project.csproj.GenerateResource.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\110323103_final_project.csproj.CoreCompileInputs.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\110323103_final_project.exe
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_final_project_0602\110323103_final_project\obj\Debug\110323103_final_project.pdb

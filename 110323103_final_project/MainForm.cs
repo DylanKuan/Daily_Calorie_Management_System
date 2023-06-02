@@ -21,5 +21,10 @@ namespace _110323103_final_project
         {
 
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
