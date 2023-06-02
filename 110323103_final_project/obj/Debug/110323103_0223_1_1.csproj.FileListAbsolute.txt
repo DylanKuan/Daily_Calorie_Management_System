@@ -1,0 +1,29 @@
+D:\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.exe.config
+D:\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.exe
+D:\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.pdb
+D:\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csprojResolveAssemblyReference.cache
+D:\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\_110323103_0223_1_1.Form1.resources
+D:\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\_110323103_0223_1_1.Properties.Resources.resources
+D:\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csproj.GenerateResource.Cache
+D:\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.exe
+D:\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.pdb
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.exe.config
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.exe
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.pdb
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csprojAssemblyReference.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\_110323103_0223_1_1.Form1.resources
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\_110323103_0223_1_1.Properties.Resources.resources
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csproj.GenerateResource.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csproj.CoreCompileInputs.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.exe
+C:\Users\kuanc\Desktop\Object-oriented Programming\HW\HW1\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.pdb
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.exe.config
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.exe
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\bin\Debug\110323103_0223_1_1.pdb
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csprojAssemblyReference.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\_110323103_0223_1_1.MainForm.resources
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\_110323103_0223_1_1.Properties.Resources.resources
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csproj.GenerateResource.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.csproj.CoreCompileInputs.cache
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.exe
+C:\Users\kuanc\Desktop\Object-oriented Programming\final_project\110323103_0223_1_1\110323103_0223_1_1\obj\Debug\110323103_0223_1_1.pdb
