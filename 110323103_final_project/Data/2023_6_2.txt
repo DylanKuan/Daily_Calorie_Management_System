@@ -1,0 +1,3 @@
+intake : 早餐 800 黑胡椒鐵板麵
+intake : 飲料 100 紅茶
+Expenditure : 游泳 30

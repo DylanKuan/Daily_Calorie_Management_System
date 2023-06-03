@@ -1,4 +1,8 @@
-﻿namespace _110323103_final_project
+﻿using ManagementTaskProject;
+using System.Collections.Generic;
+using System;
+
+namespace _110323103_final_project
 {
     partial class MainForm
     {
@@ -7,6 +11,10 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
+        private ManagementTask CurMgmtTask;
+        private List<Object> ItemSelectInListBox;
+        string FilePath;
+        bool LoadFileFlag;
         /// <summary>
         /// 清除任何使用中的資源。
         /// </summary>
@@ -35,14 +43,18 @@
             this.comboBoxMonth = new System.Windows.Forms.ComboBox();
             this.comboBoxDay = new System.Windows.Forms.ComboBox();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelData = new System.Windows.Forms.Panel();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.listBoxItem = new System.Windows.Forms.ListBox();
             this.labelResNum = new System.Windows.Forms.Label();
             this.labelInNum = new System.Windows.Forms.Label();
             this.labelRes = new System.Windows.Forms.Label();
             this.labelIn = new System.Windows.Forms.Label();
             this.textBoxBMR = new System.Windows.Forms.TextBox();
             this.labelBMR = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.panelData.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelYear
@@ -100,10 +112,12 @@
             this.comboBoxYear.Name = "comboBoxYear";
             this.comboBoxYear.Size = new System.Drawing.Size(88, 39);
             this.comboBoxYear.TabIndex = 3;
+            this.comboBoxYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate__SelectedIndexChanged);
             // 
             // comboBoxMonth
             // 
             this.comboBoxMonth.DropDownHeight = 200;
+            this.comboBoxMonth.Enabled = false;
             this.comboBoxMonth.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxMonth.FormattingEnabled = true;
             this.comboBoxMonth.IntegralHeight = false;
@@ -124,10 +138,12 @@
             this.comboBoxMonth.Name = "comboBoxMonth";
             this.comboBoxMonth.Size = new System.Drawing.Size(88, 39);
             this.comboBoxMonth.TabIndex = 4;
+            this.comboBoxMonth.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate__SelectedIndexChanged);
             // 
             // comboBoxDay
             // 
             this.comboBoxDay.DropDownHeight = 200;
+            this.comboBoxDay.Enabled = false;
             this.comboBoxDay.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDay.FormattingEnabled = true;
             this.comboBoxDay.IntegralHeight = false;
@@ -167,30 +183,56 @@
             this.comboBoxDay.Name = "comboBoxDay";
             this.comboBoxDay.Size = new System.Drawing.Size(88, 39);
             this.comboBoxDay.TabIndex = 5;
+            this.comboBoxDay.SelectedIndexChanged += new System.EventHandler(this.comboBoxDate__SelectedIndexChanged);
             // 
             // buttonAdd
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.Black;
-            this.buttonAdd.Location = new System.Drawing.Point(489, 39);
+            this.buttonAdd.Location = new System.Drawing.Point(66, 350);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(101, 53);
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "新增";
             this.buttonAdd.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panelData
             // 
-            this.panel1.Controls.Add(this.labelResNum);
-            this.panel1.Controls.Add(this.labelInNum);
-            this.panel1.Controls.Add(this.labelRes);
-            this.panel1.Controls.Add(this.labelIn);
-            this.panel1.Controls.Add(this.textBoxBMR);
-            this.panel1.Controls.Add(this.labelBMR);
-            this.panel1.Location = new System.Drawing.Point(12, 110);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(954, 426);
-            this.panel1.TabIndex = 7;
+            this.panelData.Controls.Add(this.buttonRemove);
+            this.panelData.Controls.Add(this.listBoxItem);
+            this.panelData.Controls.Add(this.buttonAdd);
+            this.panelData.Controls.Add(this.labelResNum);
+            this.panelData.Controls.Add(this.labelInNum);
+            this.panelData.Controls.Add(this.labelRes);
+            this.panelData.Controls.Add(this.labelIn);
+            this.panelData.Controls.Add(this.textBoxBMR);
+            this.panelData.Controls.Add(this.labelBMR);
+            this.panelData.Location = new System.Drawing.Point(12, 110);
+            this.panelData.Name = "panelData";
+            this.panelData.Size = new System.Drawing.Size(954, 426);
+            this.panelData.TabIndex = 7;
+            this.panelData.Visible = false;
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRemove.ForeColor = System.Drawing.Color.Black;
+            this.buttonRemove.Location = new System.Drawing.Point(273, 350);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(101, 53);
+            this.buttonRemove.TabIndex = 8;
+            this.buttonRemove.Text = "移除";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            // 
+            // listBoxItem
+            // 
+            this.listBoxItem.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxItem.FormattingEnabled = true;
+            this.listBoxItem.ItemHeight = 31;
+            this.listBoxItem.Location = new System.Drawing.Point(29, 81);
+            this.listBoxItem.Name = "listBoxItem";
+            this.listBoxItem.Size = new System.Drawing.Size(384, 252);
+            this.listBoxItem.TabIndex = 7;
             // 
             // labelResNum
             // 
@@ -255,14 +297,29 @@
             this.labelBMR.TabIndex = 1;
             this.labelBMR.Text = "基礎代謝率 :";
             // 
+            // openFileDialogLoad
+            // 
+            this.openFileDialogLoad.FileName = "openFileDialog1";
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSearch.ForeColor = System.Drawing.Color.Black;
+            this.buttonSearch.Location = new System.Drawing.Point(473, 39);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(101, 53);
+            this.buttonSearch.TabIndex = 9;
+            this.buttonSearch.Text = "搜尋";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Silver;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(980, 550);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonSearch);
+            this.Controls.Add(this.panelData);
             this.Controls.Add(this.comboBoxDay);
             this.Controls.Add(this.comboBoxMonth);
             this.Controls.Add(this.comboBoxYear);
@@ -274,8 +331,8 @@
             this.Name = "MainForm";
             this.Text = "熱量紀錄軟體";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelData.ResumeLayout(false);
+            this.panelData.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,13 +347,17 @@
         private System.Windows.Forms.ComboBox comboBoxMonth;
         private System.Windows.Forms.ComboBox comboBoxDay;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelData;
         private System.Windows.Forms.Label labelResNum;
         private System.Windows.Forms.Label labelInNum;
         private System.Windows.Forms.Label labelRes;
         private System.Windows.Forms.Label labelIn;
         private System.Windows.Forms.TextBox textBoxBMR;
         private System.Windows.Forms.Label labelBMR;
+        private System.Windows.Forms.OpenFileDialog openFileDialogLoad;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.ListBox listBoxItem;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }
 
