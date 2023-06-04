@@ -7,7 +7,6 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         public string NewItem;
-
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>

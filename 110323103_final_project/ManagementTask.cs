@@ -40,31 +40,36 @@ namespace ManagementTaskProject
             if (!File.Exists(FileName))
             {
                 FileStream CurFile = new FileStream(FileName, FileMode.Create, FileAccess.Write);
+                CurFile.Close();
             }
             else
             {
                 String CurLine;
                 StreamReader TaskText = new StreamReader(FileName);
-                String[] Piecewise;
                 while (TaskText.Peek() >= 0)
                 {
                     CurLine = TaskText.ReadLine();
-                    if (CurLine.ToUpper().Contains("INTAKE"))
-                    {
-                        Piecewise = CurLine.Trim().Split(':');
-                        Piecewise = Piecewise[1].Trim().Split(' ');
-                        Item.Add(new Intake(Piecewise[0], Convert.ToSingle(Piecewise[1]), Piecewise[2]));
-                    }
-                    else if (CurLine.ToUpper().Contains("EXPENDITURE"))
-                    {
-                        Piecewise = CurLine.Trim().Split(':');
-                        Piecewise = Piecewise[1].Trim().Split(' ');
-                        Item.Add(new Expenditure(Piecewise[0], Convert.ToInt32(Piecewise[1])));
-                    }
+                    Add_daily_item(CurLine);
                 }
+                TaskText.Close();
             }
+        }
 
-
+        public void Add_daily_item(string CurLine)
+        {
+            String[] Piecewise;
+            if (CurLine.Contains("攝取"))
+            {
+                Piecewise = CurLine.Trim().Split(':');
+                Piecewise = Piecewise[1].Trim().Split(' ');
+                Item.Add(new Intake(Piecewise[0], Convert.ToSingle(Piecewise[1]), Piecewise[2]));
+            }
+            else if (CurLine.Contains("消耗"))
+            {
+                Piecewise = CurLine.Trim().Split(':');
+                Piecewise = Piecewise[1].Trim().Split(' ');
+                Item.Add(new Expenditure(Piecewise[0], Convert.ToInt32(Piecewise[1])));
+            }
         }
     }
 }

@@ -44,9 +44,9 @@ namespace _110323103_final_project
         {
             //error check
             if (comboBoxType.Text == "攝取")
-                NewItem = "Intake   (" + comboBoxItem.Text + ", " + textBoxValue.Text + ", " + textBoxRemark.Text + ")";
+                NewItem = "攝取 : " + comboBoxItem.Text + " " + textBoxValue.Text + " " + textBoxRemark.Text;
             else if (comboBoxType.Text == "消耗")
-                NewItem = "Expenditure   (" + comboBoxItem.Text + ", " + textBoxValue.Text + ")";
+                NewItem = "消耗 : " + comboBoxItem.Text + " " + textBoxValue.Text;
             this.Close();
         }
     }

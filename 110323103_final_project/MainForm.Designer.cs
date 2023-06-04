@@ -12,8 +12,10 @@ namespace _110323103_final_project
         private System.ComponentModel.IContainer components = null;
 
         private ManagementTask CurMgmtTask;
-        private List<Object> ItemSelectInListBox;
+        private List<Object> ItemSelectInListBoxIntake;
+        private List<Object> ItemSelectInListBoxExpenditure;
         string FilePath;
+        string FileName;
         bool LoadFileFlag;
         public string NewItemInMainForm;
         /// <summary>
@@ -45,15 +47,15 @@ namespace _110323103_final_project
             this.comboBoxDay = new System.Windows.Forms.ComboBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.panelData = new System.Windows.Forms.Panel();
+            this.labelIntake = new System.Windows.Forms.Label();
+            this.labelExpenditure = new System.Windows.Forms.Label();
+            this.listBoxExpenditure = new System.Windows.Forms.ListBox();
             this.buttonRemove = new System.Windows.Forms.Button();
-            this.listBoxItem = new System.Windows.Forms.ListBox();
-            this.labelResNum = new System.Windows.Forms.Label();
+            this.listBoxIntake = new System.Windows.Forms.ListBox();
+            this.labelOutNum = new System.Windows.Forms.Label();
             this.labelInNum = new System.Windows.Forms.Label();
-            this.labelRes = new System.Windows.Forms.Label();
+            this.labelOut = new System.Windows.Forms.Label();
             this.labelIn = new System.Windows.Forms.Label();
-            this.textBoxBMR = new System.Windows.Forms.TextBox();
-            this.labelBMR = new System.Windows.Forms.Label();
-            this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
             this.panelData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,7 +194,7 @@ namespace _110323103_final_project
             // 
             this.buttonAdd.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.Black;
-            this.buttonAdd.Location = new System.Drawing.Point(66, 350);
+            this.buttonAdd.Location = new System.Drawing.Point(29, 370);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(101, 53);
             this.buttonAdd.TabIndex = 6;
@@ -202,108 +204,121 @@ namespace _110323103_final_project
             // 
             // panelData
             // 
+            this.panelData.Controls.Add(this.labelIntake);
+            this.panelData.Controls.Add(this.labelExpenditure);
+            this.panelData.Controls.Add(this.listBoxExpenditure);
             this.panelData.Controls.Add(this.buttonRemove);
-            this.panelData.Controls.Add(this.listBoxItem);
+            this.panelData.Controls.Add(this.listBoxIntake);
             this.panelData.Controls.Add(this.buttonAdd);
-            this.panelData.Controls.Add(this.labelResNum);
+            this.panelData.Controls.Add(this.labelOutNum);
             this.panelData.Controls.Add(this.labelInNum);
-            this.panelData.Controls.Add(this.labelRes);
+            this.panelData.Controls.Add(this.labelOut);
             this.panelData.Controls.Add(this.labelIn);
-            this.panelData.Controls.Add(this.textBoxBMR);
-            this.panelData.Controls.Add(this.labelBMR);
             this.panelData.Location = new System.Drawing.Point(12, 110);
             this.panelData.Name = "panelData";
             this.panelData.Size = new System.Drawing.Size(954, 426);
             this.panelData.TabIndex = 7;
             this.panelData.Visible = false;
             // 
+            // labelIntake
+            // 
+            this.labelIntake.AutoSize = true;
+            this.labelIntake.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIntake.ForeColor = System.Drawing.Color.Black;
+            this.labelIntake.Location = new System.Drawing.Point(23, 9);
+            this.labelIntake.Name = "labelIntake";
+            this.labelIntake.Size = new System.Drawing.Size(87, 33);
+            this.labelIntake.TabIndex = 11;
+            this.labelIntake.Text = "攝取 :";
+            // 
+            // labelExpenditure
+            // 
+            this.labelExpenditure.AutoSize = true;
+            this.labelExpenditure.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelExpenditure.ForeColor = System.Drawing.Color.Black;
+            this.labelExpenditure.Location = new System.Drawing.Point(23, 197);
+            this.labelExpenditure.Name = "labelExpenditure";
+            this.labelExpenditure.Size = new System.Drawing.Size(87, 33);
+            this.labelExpenditure.TabIndex = 10;
+            this.labelExpenditure.Text = "消耗 :";
+            // 
+            // listBoxExpenditure
+            // 
+            this.listBoxExpenditure.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxExpenditure.FormattingEnabled = true;
+            this.listBoxExpenditure.ItemHeight = 31;
+            this.listBoxExpenditure.Location = new System.Drawing.Point(29, 233);
+            this.listBoxExpenditure.Name = "listBoxExpenditure";
+            this.listBoxExpenditure.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBoxExpenditure.Size = new System.Drawing.Size(518, 128);
+            this.listBoxExpenditure.TabIndex = 9;
+            // 
             // buttonRemove
             // 
             this.buttonRemove.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRemove.ForeColor = System.Drawing.Color.Black;
-            this.buttonRemove.Location = new System.Drawing.Point(273, 350);
+            this.buttonRemove.Location = new System.Drawing.Point(446, 370);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(101, 53);
             this.buttonRemove.TabIndex = 8;
             this.buttonRemove.Text = "移除";
             this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
             // 
-            // listBoxItem
+            // listBoxIntake
             // 
-            this.listBoxItem.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listBoxItem.FormattingEnabled = true;
-            this.listBoxItem.ItemHeight = 31;
-            this.listBoxItem.Location = new System.Drawing.Point(29, 81);
-            this.listBoxItem.Name = "listBoxItem";
-            this.listBoxItem.Size = new System.Drawing.Size(384, 252);
-            this.listBoxItem.TabIndex = 7;
+            this.listBoxIntake.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listBoxIntake.FormattingEnabled = true;
+            this.listBoxIntake.ItemHeight = 31;
+            this.listBoxIntake.Location = new System.Drawing.Point(29, 45);
+            this.listBoxIntake.Name = "listBoxIntake";
+            this.listBoxIntake.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.listBoxIntake.Size = new System.Drawing.Size(518, 128);
+            this.listBoxIntake.TabIndex = 7;
             // 
-            // labelResNum
+            // labelOutNum
             // 
-            this.labelResNum.AutoSize = true;
-            this.labelResNum.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelResNum.ForeColor = System.Drawing.Color.Black;
-            this.labelResNum.Location = new System.Drawing.Point(759, 328);
-            this.labelResNum.Name = "labelResNum";
-            this.labelResNum.Size = new System.Drawing.Size(57, 33);
-            this.labelResNum.TabIndex = 6;
-            this.labelResNum.Text = "???";
+            this.labelOutNum.AutoSize = true;
+            this.labelOutNum.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOutNum.ForeColor = System.Drawing.Color.Black;
+            this.labelOutNum.Location = new System.Drawing.Point(815, 328);
+            this.labelOutNum.Name = "labelOutNum";
+            this.labelOutNum.Size = new System.Drawing.Size(60, 35);
+            this.labelOutNum.TabIndex = 6;
+            this.labelOutNum.Text = "???";
             // 
             // labelInNum
             // 
             this.labelInNum.AutoSize = true;
-            this.labelInNum.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelInNum.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInNum.ForeColor = System.Drawing.Color.Black;
-            this.labelInNum.Location = new System.Drawing.Point(759, 256);
+            this.labelInNum.Location = new System.Drawing.Point(815, 252);
             this.labelInNum.Name = "labelInNum";
-            this.labelInNum.Size = new System.Drawing.Size(57, 33);
+            this.labelInNum.Size = new System.Drawing.Size(60, 35);
             this.labelInNum.TabIndex = 5;
             this.labelInNum.Text = "???";
             // 
-            // labelRes
+            // labelOut
             // 
-            this.labelRes.AutoSize = true;
-            this.labelRes.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRes.ForeColor = System.Drawing.Color.Black;
-            this.labelRes.Location = new System.Drawing.Point(569, 328);
-            this.labelRes.Name = "labelRes";
-            this.labelRes.Size = new System.Drawing.Size(145, 33);
-            this.labelRes.TabIndex = 4;
-            this.labelRes.Text = "剩餘熱量 :";
+            this.labelOut.AutoSize = true;
+            this.labelOut.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelOut.ForeColor = System.Drawing.Color.Black;
+            this.labelOut.Location = new System.Drawing.Point(624, 328);
+            this.labelOut.Name = "labelOut";
+            this.labelOut.Size = new System.Drawing.Size(185, 35);
+            this.labelOut.TabIndex = 4;
+            this.labelOut.Text = "已消耗熱量 :";
             // 
             // labelIn
             // 
             this.labelIn.AutoSize = true;
-            this.labelIn.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIn.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIn.ForeColor = System.Drawing.Color.Black;
-            this.labelIn.Location = new System.Drawing.Point(553, 256);
+            this.labelIn.Location = new System.Drawing.Point(624, 252);
             this.labelIn.Name = "labelIn";
-            this.labelIn.Size = new System.Drawing.Size(174, 33);
+            this.labelIn.Size = new System.Drawing.Size(185, 35);
             this.labelIn.TabIndex = 3;
             this.labelIn.Text = "已攝取熱量 :";
-            // 
-            // textBoxBMR
-            // 
-            this.textBoxBMR.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxBMR.Location = new System.Drawing.Point(742, 177);
-            this.textBoxBMR.Name = "textBoxBMR";
-            this.textBoxBMR.Size = new System.Drawing.Size(100, 38);
-            this.textBoxBMR.TabIndex = 2;
-            // 
-            // labelBMR
-            // 
-            this.labelBMR.AutoSize = true;
-            this.labelBMR.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBMR.ForeColor = System.Drawing.Color.Black;
-            this.labelBMR.Location = new System.Drawing.Point(553, 180);
-            this.labelBMR.Name = "labelBMR";
-            this.labelBMR.Size = new System.Drawing.Size(174, 33);
-            this.labelBMR.TabIndex = 1;
-            this.labelBMR.Text = "基礎代謝率 :";
-            // 
-            // openFileDialogLoad
-            // 
-            this.openFileDialogLoad.FileName = "openFileDialog1";
             // 
             // MainForm
             // 
@@ -340,15 +355,15 @@ namespace _110323103_final_project
         private System.Windows.Forms.ComboBox comboBoxDay;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Panel panelData;
-        private System.Windows.Forms.Label labelResNum;
+        private System.Windows.Forms.Label labelOutNum;
         private System.Windows.Forms.Label labelInNum;
-        private System.Windows.Forms.Label labelRes;
+        private System.Windows.Forms.Label labelOut;
         private System.Windows.Forms.Label labelIn;
-        private System.Windows.Forms.TextBox textBoxBMR;
-        private System.Windows.Forms.Label labelBMR;
-        private System.Windows.Forms.OpenFileDialog openFileDialogLoad;
         private System.Windows.Forms.Button buttonRemove;
-        private System.Windows.Forms.ListBox listBoxItem;
+        private System.Windows.Forms.ListBox listBoxIntake;
+        private System.Windows.Forms.ListBox listBoxExpenditure;
+        private System.Windows.Forms.Label labelIntake;
+        private System.Windows.Forms.Label labelExpenditure;
     }
 }
 

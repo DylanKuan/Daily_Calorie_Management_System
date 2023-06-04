@@ -38,36 +38,64 @@ namespace _110323103_final_project
                 panelData.Visible = true;
                 LoadFileFlag = true;
             }
+            LoadFile_Task(LoadFileFlag);
+        }
 
-            if (LoadFileFlag)
+        private void LoadFile_Task(bool Flag)
+        {
+            if (Flag)
             {
-                listBoxItem.Items.Clear();
+                listBoxIntake.Items.Clear();
+                listBoxExpenditure.Items.Clear();
                 CurMgmtTask = new ManagementTask();
-                string FileName = FilePath + comboBoxYear.Text + "_" + comboBoxMonth.Text + "_" + comboBoxDay.Text + ".txt";
+                FileName = FilePath + comboBoxYear.Text + "_" + comboBoxMonth.Text + "_" + comboBoxDay.Text + ".txt";
                 CurMgmtTask.LoadTaskFile(FileName);
-
-
-                ItemSelectInListBox = CurMgmtTask.Item.FindAll(delegate (Object obj) { return obj.GetType() == typeof(Intake); });
-                foreach (Object CurItem in ItemSelectInListBox)
-                {
-                    Intake CurIntake = (Intake)CurItem;
-                    listBoxItem.Items.Add("Intake   (" + CurIntake.Name + ", " + CurIntake.Calories + ", " + CurIntake.Remark + ")");
-                }
-                ItemSelectInListBox = CurMgmtTask.Item.FindAll(delegate (Object obj) { return obj.GetType() == typeof(Expenditure); });
-                foreach(Object CurItem in ItemSelectInListBox)
-                {
-                    Expenditure CurExpenditure = (Expenditure)CurItem;
-                    listBoxItem.Items.Add("Expenditure   (" + CurExpenditure.Name + ", " + CurExpenditure.Time +  ")");
-                }
-                Refresh();
+                Item_to_ListBox();
             }
+        }
+
+        private void Item_to_ListBox()
+        {
+            float totalIntake = 0, totalExpenditure = 0;
+            ItemSelectInListBoxIntake = CurMgmtTask.Item.FindAll(delegate (Object obj) { return obj.GetType() == typeof(Intake); });
+            foreach (Object CurItem in ItemSelectInListBoxIntake)
+            {
+                Intake CurIntake = (Intake)CurItem;
+                listBoxIntake.Items.Add("    " + CurIntake.Name + " : " + CurIntake.Calories + "大卡, " + CurIntake.Remark);
+                totalIntake += CurIntake.Calories;
+            }
+            ItemSelectInListBoxExpenditure = CurMgmtTask.Item.FindAll(delegate (Object obj) { return obj.GetType() == typeof(Expenditure); });
+            foreach (Object CurItem in ItemSelectInListBoxExpenditure)
+            {
+                Expenditure CurExpenditure = (Expenditure)CurItem;
+                listBoxExpenditure.Items.Add("    " + CurExpenditure.Name + " : " + CurExpenditure.Time + "分鐘");
+            }
+            labelInNum.Text = totalIntake.ToString() + "  大卡";
+            labelOutNum.Text = totalExpenditure.ToString() + "  大卡";
+            Refresh();
+        }
+
+        private void Rewrite_File()
+        {
+            FileStream RewriteFile = new FileStream(FileName, FileMode.Create, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(RewriteFile);
+            foreach (Intake CurItem in ItemSelectInListBoxIntake)
+                sw.WriteLine("攝取 : " + CurItem.Name + " " + CurItem.Calories.ToString() + " " + CurItem.Remark);
+            foreach (Expenditure CurItem in ItemSelectInListBoxExpenditure)
+                sw.WriteLine("消耗 : " + CurItem.Name + " " + CurItem.Time.ToString());
+            sw.Flush();
+            sw.Close();
+            RewriteFile.Close();
         }
 
         private void CurAddForm__FormClosedInMainForm(object sender, EventArgs e)
         {
             AddForm CurAddForm = (AddForm)sender;
             NewItemInMainForm = CurAddForm.NewItem;
-            listBoxItem.Items.Add(NewItemInMainForm);
+            CurMgmtTask.Add_daily_item(NewItemInMainForm);
+            Item_to_ListBox();
+            Rewrite_File();
+            LoadFile_Task(LoadFileFlag);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -75,6 +103,16 @@ namespace _110323103_final_project
             AddForm CurAddForm = new AddForm();
             CurAddForm.Show();
             CurAddForm.FormClosed += new FormClosedEventHandler(CurAddForm__FormClosedInMainForm);
+        }
+
+        private void buttonRemove_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < listBoxIntake.SelectedIndices.Count; i++)
+                ItemSelectInListBoxIntake.RemoveAt(listBoxIntake.SelectedIndices[i]);
+            for (int i = 0; i < listBoxExpenditure.SelectedIndices.Count; i++)
+                ItemSelectInListBoxExpenditure.RemoveAt(listBoxExpenditure.SelectedIndices[i]);
+            Rewrite_File();
+            LoadFile_Task(LoadFileFlag);
         }
     }
 }
