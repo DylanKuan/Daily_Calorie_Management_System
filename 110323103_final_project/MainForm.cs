@@ -41,6 +41,7 @@ namespace _110323103_final_project
 
             if (LoadFileFlag)
             {
+                listBoxItem.Items.Clear();
                 CurMgmtTask = new ManagementTask();
                 string FileName = FilePath + comboBoxYear.Text + "_" + comboBoxMonth.Text + "_" + comboBoxDay.Text + ".txt";
                 CurMgmtTask.LoadTaskFile(FileName);
@@ -58,7 +59,22 @@ namespace _110323103_final_project
                     Expenditure CurExpenditure = (Expenditure)CurItem;
                     listBoxItem.Items.Add("Expenditure   (" + CurExpenditure.Name + ", " + CurExpenditure.Time +  ")");
                 }
+                Refresh();
             }
+        }
+
+        private void CurAddForm__FormClosedInMainForm(object sender, EventArgs e)
+        {
+            AddForm CurAddForm = (AddForm)sender;
+            NewItemInMainForm = CurAddForm.NewItem;
+            listBoxItem.Items.Add(NewItemInMainForm);
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            AddForm CurAddForm = new AddForm();
+            CurAddForm.Show();
+            CurAddForm.FormClosed += new FormClosedEventHandler(CurAddForm__FormClosedInMainForm);
         }
     }
 }

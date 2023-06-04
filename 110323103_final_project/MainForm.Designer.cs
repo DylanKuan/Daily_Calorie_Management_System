@@ -15,6 +15,7 @@ namespace _110323103_final_project
         private List<Object> ItemSelectInListBox;
         string FilePath;
         bool LoadFileFlag;
+        public string NewItemInMainForm;
         /// <summary>
         /// 清除任何使用中的資源。
         /// </summary>
@@ -53,7 +54,6 @@ namespace _110323103_final_project
             this.textBoxBMR = new System.Windows.Forms.TextBox();
             this.labelBMR = new System.Windows.Forms.Label();
             this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.panelData.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +93,7 @@ namespace _110323103_final_project
             // comboBoxYear
             // 
             this.comboBoxYear.DropDownHeight = 200;
+            this.comboBoxYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxYear.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxYear.FormattingEnabled = true;
             this.comboBoxYear.IntegralHeight = false;
@@ -117,6 +118,7 @@ namespace _110323103_final_project
             // comboBoxMonth
             // 
             this.comboBoxMonth.DropDownHeight = 200;
+            this.comboBoxMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMonth.Enabled = false;
             this.comboBoxMonth.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxMonth.FormattingEnabled = true;
@@ -143,6 +145,7 @@ namespace _110323103_final_project
             // comboBoxDay
             // 
             this.comboBoxDay.DropDownHeight = 200;
+            this.comboBoxDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDay.Enabled = false;
             this.comboBoxDay.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDay.FormattingEnabled = true;
@@ -195,6 +198,7 @@ namespace _110323103_final_project
             this.buttonAdd.TabIndex = 6;
             this.buttonAdd.Text = "新增";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // panelData
             // 
@@ -301,24 +305,12 @@ namespace _110323103_final_project
             // 
             this.openFileDialogLoad.FileName = "openFileDialog1";
             // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonSearch.ForeColor = System.Drawing.Color.Black;
-            this.buttonSearch.Location = new System.Drawing.Point(473, 39);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(101, 53);
-            this.buttonSearch.TabIndex = 9;
-            this.buttonSearch.Text = "搜尋";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(980, 550);
-            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.panelData);
             this.Controls.Add(this.comboBoxDay);
             this.Controls.Add(this.comboBoxMonth);
@@ -329,7 +321,7 @@ namespace _110323103_final_project
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "熱量紀錄軟體";
+            this.Text = "每日熱量紀錄系統";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panelData.ResumeLayout(false);
             this.panelData.PerformLayout();
@@ -357,7 +349,6 @@ namespace _110323103_final_project
         private System.Windows.Forms.OpenFileDialog openFileDialogLoad;
         private System.Windows.Forms.Button buttonRemove;
         private System.Windows.Forms.ListBox listBoxItem;
-        private System.Windows.Forms.Button buttonSearch;
     }
 }
 
