@@ -42,12 +42,49 @@ namespace _110323103_final_project
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            //error check
-            if (comboBoxType.Text == "攝取")
-                NewItem = "攝取 : " + comboBoxItem.Text + " " + textBoxValue.Text + " " + textBoxRemark.Text;
-            else if (comboBoxType.Text == "消耗")
-                NewItem = "消耗 : " + comboBoxItem.Text + " " + textBoxValue.Text;
-            this.Close();
+            float itemValue = 0;
+            ErrorCodes errorType = ErrorCodes.NONE;
+            if (comboBoxType.Text == "")
+                errorType = ErrorCodes.WRONG_TYPE;
+            else if (comboBoxItem.Text == "")
+                errorType = ErrorCodes.WRONG_ITEM;
+            else if (!float.TryParse(textBoxValue.Text, out itemValue))
+                errorType = ErrorCodes.WRONG_VALUE;
+
+            Show_Error_Message(errorType);
+
+            if (errorType == ErrorCodes.NONE)
+            {
+                if (comboBoxType.Text == "攝取")
+                {
+                    if (textBoxRemark.Text == "")
+                        textBoxRemark.Text = "無";
+                    NewItem = "攝取 : " + comboBoxItem.Text + " " + textBoxValue.Text + " " + textBoxRemark.Text;
+                }
+                else if (comboBoxType.Text == "消耗")
+                {
+                    NewItem = "消耗 : " + comboBoxItem.Text + " " + textBoxValue.Text;
+                }
+                this.Close();
+            }
+        }
+
+        private void Show_Error_Message(ErrorCodes errorType)
+        {
+            switch (errorType)
+            {
+                case ErrorCodes.NONE:
+                    break;
+                case ErrorCodes.WRONG_TYPE:
+                    MessageBox.Show("請選擇類型!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case ErrorCodes.WRONG_ITEM:
+                    MessageBox.Show("請選擇項目!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                case ErrorCodes.WRONG_VALUE:
+                    MessageBox.Show("請輸入數值!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+            }
         }
     }
 }

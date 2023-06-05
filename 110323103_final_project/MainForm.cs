@@ -54,9 +54,9 @@ namespace _110323103_final_project
             }
         }
 
-        private void Item_to_ListBox()
+        private void Item_to_ListBox() // 將文字檔所有的項目依照攝取與消耗分成兩部分，並顯示至2對應的listBox
         {
-            float totalIntake = 0, totalExpenditure = 0;
+            double totalIntake = 0, totalExpenditure = 0;
             ItemSelectInListBoxIntake = CurMgmtTask.Item.FindAll(delegate (Object obj) { return obj.GetType() == typeof(Intake); });
             foreach (Object CurItem in ItemSelectInListBoxIntake)
             {
@@ -68,14 +68,16 @@ namespace _110323103_final_project
             foreach (Object CurItem in ItemSelectInListBoxExpenditure)
             {
                 Expenditure CurExpenditure = (Expenditure)CurItem;
-                listBoxExpenditure.Items.Add("    " + CurExpenditure.Name + " : " + CurExpenditure.Time + "分鐘");
+                CurExpenditure.Calories = CurExpenditure.Compute();
+                listBoxExpenditure.Items.Add("    " + CurExpenditure.Name + " : " + CurExpenditure.Time + "分鐘, " + (int)CurExpenditure.Calories + "大卡");
+                totalExpenditure += CurExpenditure.Calories;
             }
             labelInNum.Text = totalIntake.ToString() + "  大卡";
-            labelOutNum.Text = totalExpenditure.ToString() + "  大卡";
+            labelOutNum.Text = ((int)totalExpenditure).ToString() + "  大卡";
             Refresh();
         }
 
-        private void Rewrite_File()
+        private void Rewrite_File() // 將listBox顯示的所有項目重新寫至該文字檔
         {
             FileStream RewriteFile = new FileStream(FileName, FileMode.Create, FileAccess.Write);
             StreamWriter sw = new StreamWriter(RewriteFile);
@@ -88,14 +90,17 @@ namespace _110323103_final_project
             RewriteFile.Close();
         }
 
-        private void CurAddForm__FormClosedInMainForm(object sender, EventArgs e)
+        private void CurAddForm__FormClosedInMainForm(object sender, EventArgs e) // 將新增的項目加至對應的listBox => 更新文字檔 => 重新讀取更新後的檔案
         {
             AddForm CurAddForm = (AddForm)sender;
             NewItemInMainForm = CurAddForm.NewItem;
-            CurMgmtTask.Add_daily_item(NewItemInMainForm);
-            Item_to_ListBox();
-            Rewrite_File();
-            LoadFile_Task(LoadFileFlag);
+            if(NewItemInMainForm != null)
+            {
+                CurMgmtTask.Add_daily_item(NewItemInMainForm);
+                Item_to_ListBox();
+                Rewrite_File();
+                LoadFile_Task(LoadFileFlag);
+            }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -105,7 +110,7 @@ namespace _110323103_final_project
             CurAddForm.FormClosed += new FormClosedEventHandler(CurAddForm__FormClosedInMainForm);
         }
 
-        private void buttonRemove_Click(object sender, EventArgs e)
+        private void buttonRemove_Click(object sender, EventArgs e) // 刪除清單中所有被選取之項目 => 更新文字檔 => 重新讀取更新後的檔案
         {
             for (int i = 0; i < listBoxIntake.SelectedIndices.Count; i++)
                 ItemSelectInListBoxIntake.RemoveAt(listBoxIntake.SelectedIndices[i]);

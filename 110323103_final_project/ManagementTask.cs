@@ -5,13 +5,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+public enum ErrorCodes
+{
+    NONE = 0,
+    WRONG_TYPE,
+    WRONG_ITEM,
+    WRONG_VALUE
+}
+
 namespace ManagementTaskProject
 {
     public class DailyItem
     {
         public string Name;
-        public float Calories;
+        protected double _Calories;
+
+        public double Calories
+        {
+            get { return this._Calories; }
+            set
+            {
+                if (value < 0)
+                    value = 0;
+                this._Calories = value;
+            }
+        }
     }
+
+    interface CalculateCalories
+    {
+        double Compute();
+    }
+
     public class Intake : DailyItem
     {
         public string Remark;
@@ -22,13 +47,28 @@ namespace ManagementTaskProject
             this.Remark = remark;
         }
     }
-    public class Expenditure : DailyItem
+
+    public class Expenditure : DailyItem, CalculateCalories
     {
-        public int Time;
-        public Expenditure(string name, int time)
+        public double Time;
+        public Expenditure(string name, double time)
         {
             this.Name = name;
             this.Time = time;
+        }
+        public double Compute() // 各類運動消耗熱量表運動30分鐘消耗的熱量(大卡) : https://www.hpa.gov.tw/Pages/Detail.aspx?nodeid=571&pid=9738
+        {
+            double CaloriesPerMin = 0;
+            if (Name == "走路")
+                CaloriesPerMin = 122.5 / 30;
+            else if (Name == "慢跑")
+                CaloriesPerMin = 287 / 30;
+            else if (Name == "騎腳踏車")
+                CaloriesPerMin = 140 / 30;
+            else if (Name == "游泳")
+                CaloriesPerMin = 220.5 / 30;
+
+            return Time * CaloriesPerMin;
         }
     }
     class ManagementTask

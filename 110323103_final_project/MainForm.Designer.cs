@@ -250,14 +250,14 @@ namespace _110323103_final_project
             this.listBoxExpenditure.Location = new System.Drawing.Point(29, 233);
             this.listBoxExpenditure.Name = "listBoxExpenditure";
             this.listBoxExpenditure.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxExpenditure.Size = new System.Drawing.Size(518, 128);
+            this.listBoxExpenditure.Size = new System.Drawing.Size(450, 128);
             this.listBoxExpenditure.TabIndex = 9;
             // 
             // buttonRemove
             // 
             this.buttonRemove.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRemove.ForeColor = System.Drawing.Color.Black;
-            this.buttonRemove.Location = new System.Drawing.Point(446, 370);
+            this.buttonRemove.Location = new System.Drawing.Point(378, 370);
             this.buttonRemove.Name = "buttonRemove";
             this.buttonRemove.Size = new System.Drawing.Size(101, 53);
             this.buttonRemove.TabIndex = 8;
@@ -273,7 +273,7 @@ namespace _110323103_final_project
             this.listBoxIntake.Location = new System.Drawing.Point(29, 45);
             this.listBoxIntake.Name = "listBoxIntake";
             this.listBoxIntake.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxIntake.Size = new System.Drawing.Size(518, 128);
+            this.listBoxIntake.Size = new System.Drawing.Size(450, 128);
             this.listBoxIntake.TabIndex = 7;
             // 
             // labelOutNum
@@ -281,7 +281,7 @@ namespace _110323103_final_project
             this.labelOutNum.AutoSize = true;
             this.labelOutNum.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelOutNum.ForeColor = System.Drawing.Color.Black;
-            this.labelOutNum.Location = new System.Drawing.Point(815, 328);
+            this.labelOutNum.Location = new System.Drawing.Point(798, 326);
             this.labelOutNum.Name = "labelOutNum";
             this.labelOutNum.Size = new System.Drawing.Size(60, 35);
             this.labelOutNum.TabIndex = 6;
@@ -292,7 +292,7 @@ namespace _110323103_final_project
             this.labelInNum.AutoSize = true;
             this.labelInNum.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInNum.ForeColor = System.Drawing.Color.Black;
-            this.labelInNum.Location = new System.Drawing.Point(815, 252);
+            this.labelInNum.Location = new System.Drawing.Point(798, 274);
             this.labelInNum.Name = "labelInNum";
             this.labelInNum.Size = new System.Drawing.Size(60, 35);
             this.labelInNum.TabIndex = 5;
@@ -303,22 +303,22 @@ namespace _110323103_final_project
             this.labelOut.AutoSize = true;
             this.labelOut.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelOut.ForeColor = System.Drawing.Color.Black;
-            this.labelOut.Location = new System.Drawing.Point(624, 328);
+            this.labelOut.Location = new System.Drawing.Point(543, 326);
             this.labelOut.Name = "labelOut";
-            this.labelOut.Size = new System.Drawing.Size(185, 35);
+            this.labelOut.Size = new System.Drawing.Size(216, 35);
             this.labelOut.TabIndex = 4;
-            this.labelOut.Text = "已消耗熱量 :";
+            this.labelOut.Text = "消耗熱量總和 :";
             // 
             // labelIn
             // 
             this.labelIn.AutoSize = true;
             this.labelIn.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIn.ForeColor = System.Drawing.Color.Black;
-            this.labelIn.Location = new System.Drawing.Point(624, 252);
+            this.labelIn.Location = new System.Drawing.Point(543, 274);
             this.labelIn.Name = "labelIn";
-            this.labelIn.Size = new System.Drawing.Size(185, 35);
+            this.labelIn.Size = new System.Drawing.Size(216, 35);
             this.labelIn.TabIndex = 3;
-            this.labelIn.Text = "已攝取熱量 :";
+            this.labelIn.Text = "攝取熱量總和 :";
             // 
             // MainForm
             // 
