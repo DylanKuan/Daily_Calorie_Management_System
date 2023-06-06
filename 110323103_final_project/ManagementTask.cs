@@ -40,12 +40,28 @@ namespace ManagementTaskProject
     public class Intake : DailyItem
     {
         public string Remark;
-        public Intake(string name, float carlories, string remark)
+        public Intake(string name, double carlories, string remark)
         {
             this.Name = name;
             this.Calories = carlories;
             this.Remark = remark;
         }
+        public static Intake operator ^(Intake intake, string modifiedSection)
+        {
+            String[] Piecewise = modifiedSection.Trim().Split(':');
+            if (Piecewise[0] == "項目")
+                intake.Name = Piecewise[1];
+            else if (Piecewise[0] == "熱量")
+                intake.Calories = Convert.ToDouble(Piecewise[1]);
+            else if (Piecewise[0] == "備註")
+                intake.Remark = Piecewise[1];
+            return new Intake(intake.Name, intake.Calories, intake.Remark);
+        }
+        public static Intake operator ^(string modifiedSection, Intake intake)
+        {
+            return intake ^ modifiedSection;
+        }
+
     }
 
     public class Expenditure : DailyItem, CalculateCalories
@@ -69,6 +85,19 @@ namespace ManagementTaskProject
                 CaloriesPerMin = 220.5 / 30;
 
             return Time * CaloriesPerMin;
+        }
+        public static Expenditure operator ^(Expenditure expenditure, string modifiedSection)
+        {
+            String[] Piecewise = modifiedSection.Trim().Split(':');
+            if (Piecewise[0] == "項目")
+                expenditure.Name = Piecewise[1];
+            else if (Piecewise[0] == "時間")
+                expenditure.Time = Convert.ToDouble(Piecewise[1]);
+            return new Expenditure(expenditure.Name, expenditure.Time);
+        }
+        public static Expenditure operator ^(string modifiedSection, Expenditure expenditure)
+        {
+            return expenditure ^ modifiedSection;
         }
     }
     class ManagementTask

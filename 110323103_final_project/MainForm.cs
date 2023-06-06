@@ -188,23 +188,18 @@ namespace _110323103_final_project
             if (listBoxIntake.SelectedIndices.Count == 1)
             {
                 Intake TargetItem = (Intake)ItemSelectInListBoxIntake[listBoxIntake.SelectedIndex];
-                if (comboBoxSection.Text == "項目")
-                    TargetItem.Name = comboBoxModify.Text;
-                else if(comboBoxSection.Text == "熱量")
-                    TargetItem.Calories = Convert.ToDouble(textBoxModify.Text);
-                else if (comboBoxSection.Text == "備註")
-                    TargetItem.Remark = textBoxModify.Text;
-                TargetItem.Equals("    " + TargetItem.Name + " : " + TargetItem.Calories + "大卡, " + TargetItem.Remark);
+                string result = comboBoxModify.Text;
+                if (textBoxModify.Visible == true)
+                    result = textBoxModify.Text;
+                ItemSelectInListBoxIntake[listBoxIntake.SelectedIndex] = TargetItem ^ (comboBoxSection.Text + ":" + result);
             }
             else
             {
                 Expenditure TargetItem = (Expenditure)ItemSelectInListBoxExpenditure[listBoxExpenditure.SelectedIndex];
-                if (comboBoxSection.Text == "項目")
-                    TargetItem.Name = comboBoxModify.Text;
-                else if (comboBoxSection.Text == "時間")
-                    TargetItem.Time = Convert.ToDouble(textBoxModify.Text);
-                TargetItem.Calories = TargetItem.Compute();
-                TargetItem.Equals("    " + TargetItem.Name + " : " + TargetItem.Time + "分鐘, " + (int)TargetItem.Calories + "大卡");
+                string result = comboBoxModify.Text;
+                if (textBoxModify.Visible == true)
+                    result = textBoxModify.Text;
+                ItemSelectInListBoxExpenditure[listBoxExpenditure.SelectedIndex] = TargetItem ^ (comboBoxSection.Text + ":" + result);
             }
             panelModify.Visible = false;
             Rewrite_File();
