@@ -119,5 +119,101 @@ namespace _110323103_final_project
             Rewrite_File();
             LoadFile_Task(LoadFileFlag);
         }
+
+        private void buttonModify_Click(object sender, EventArgs e)
+        {
+            if ((listBoxIntake.SelectedIndices.Count + listBoxExpenditure.SelectedIndices.Count) == 0)
+            {
+                MessageBox.Show("請選擇一個要修改的項目!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if ((listBoxIntake.SelectedIndices.Count + listBoxExpenditure.SelectedIndices.Count) != 1)
+            {
+                MessageBox.Show("一次只能修改一個項目!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+
+            }  
+            comboBoxSection.Items.Clear();
+            comboBoxModify.Visible = false;
+            textBoxModify.Visible = false;
+            labelUnit.Visible = false;
+            if (listBoxIntake.SelectedIndices.Count == 1)
+                comboBoxSection.Items.AddRange(new object[] { "項目", "熱量", "備註" });
+            else
+                comboBoxSection.Items.AddRange(new object[] { "項目", "時間" });
+            panelModify.Visible = true;
+        }
+
+        private void comboBoxSection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxModify.Items.Clear();
+            textBoxModify.Text = null;
+            comboBoxModify.Visible = false;
+            textBoxModify.Visible = false;
+            labelUnit.Visible = false;
+            if (comboBoxSection.Text == "項目")
+            {
+                if (listBoxIntake.SelectedIndices.Count == 1)
+                    comboBoxModify.Items.AddRange(new object[] { "早餐", "午餐", "晚餐", "飲料", "甜點" });
+                else
+                    comboBoxModify.Items.AddRange(new object[] { "走路", "慢跑", "游泳", "騎腳踏車" });
+                comboBoxModify.Visible = true;
+            }
+            else
+            {
+                if (comboBoxSection.Text == "熱量")
+                    labelUnit.Text = "大卡";
+                else if (comboBoxSection.Text == "時間")
+                    labelUnit.Text = "分鐘";
+                else if (comboBoxSection.Text == "備註")
+                    labelUnit.Text = "  ";
+                labelUnit.Visible = true;
+                textBoxModify.Visible = true;
+            }
+        }
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            float itemValue = 0;
+            if (comboBoxSection.Text == "")
+            {
+                MessageBox.Show("請選擇項目!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else if ((comboBoxSection.Text == "熱量" || comboBoxSection.Text == "時間") && !float.TryParse(textBoxModify.Text, out itemValue))
+            {
+                MessageBox.Show("請輸入數值!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (listBoxIntake.SelectedIndices.Count == 1)
+            {
+                Intake TargetItem = (Intake)ItemSelectInListBoxIntake[listBoxIntake.SelectedIndex];
+                if (comboBoxSection.Text == "項目")
+                    TargetItem.Name = comboBoxModify.Text;
+                else if(comboBoxSection.Text == "熱量")
+                    TargetItem.Calories = Convert.ToDouble(textBoxModify.Text);
+                else if (comboBoxSection.Text == "備註")
+                    TargetItem.Remark = textBoxModify.Text;
+                TargetItem.Equals("    " + TargetItem.Name + " : " + TargetItem.Calories + "大卡, " + TargetItem.Remark);
+            }
+            else
+            {
+                Expenditure TargetItem = (Expenditure)ItemSelectInListBoxExpenditure[listBoxExpenditure.SelectedIndex];
+                if (comboBoxSection.Text == "項目")
+                    TargetItem.Name = comboBoxModify.Text;
+                else if (comboBoxSection.Text == "時間")
+                    TargetItem.Time = Convert.ToDouble(textBoxModify.Text);
+                TargetItem.Calories = TargetItem.Compute();
+                TargetItem.Equals("    " + TargetItem.Name + " : " + TargetItem.Time + "分鐘, " + (int)TargetItem.Calories + "大卡");
+            }
+            panelModify.Visible = false;
+            Rewrite_File();
+            LoadFile_Task(LoadFileFlag);
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            panelModify.Visible = false;
+        }
     }
 }

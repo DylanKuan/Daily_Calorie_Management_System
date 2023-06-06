@@ -57,7 +57,7 @@
             this.comboBoxType.Items.AddRange(new object[] {
             "攝取",
             "消耗"});
-            this.comboBoxType.Location = new System.Drawing.Point(121, 49);
+            this.comboBoxType.Location = new System.Drawing.Point(121, 31);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(151, 39);
             this.comboBoxType.TabIndex = 4;
@@ -68,7 +68,7 @@
             this.labelType.AutoSize = true;
             this.labelType.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelType.ForeColor = System.Drawing.Color.Black;
-            this.labelType.Location = new System.Drawing.Point(28, 52);
+            this.labelType.Location = new System.Drawing.Point(28, 34);
             this.labelType.Name = "labelType";
             this.labelType.Size = new System.Drawing.Size(87, 33);
             this.labelType.TabIndex = 5;
@@ -151,9 +151,9 @@
             // 
             this.panelRemark.Controls.Add(this.labelRemark);
             this.panelRemark.Controls.Add(this.textBoxRemark);
-            this.panelRemark.Location = new System.Drawing.Point(12, 209);
+            this.panelRemark.Location = new System.Drawing.Point(12, 208);
             this.panelRemark.Name = "panelRemark";
-            this.panelRemark.Size = new System.Drawing.Size(355, 38);
+            this.panelRemark.Size = new System.Drawing.Size(355, 42);
             this.panelRemark.TabIndex = 14;
             this.panelRemark.Visible = false;
             // 
@@ -162,9 +162,9 @@
             this.panelValue.Controls.Add(this.labelValue);
             this.panelValue.Controls.Add(this.labelUnit);
             this.panelValue.Controls.Add(this.textBoxValue);
-            this.panelValue.Location = new System.Drawing.Point(12, 155);
+            this.panelValue.Location = new System.Drawing.Point(12, 149);
             this.panelValue.Name = "panelValue";
-            this.panelValue.Size = new System.Drawing.Size(355, 38);
+            this.panelValue.Size = new System.Drawing.Size(355, 42);
             this.panelValue.TabIndex = 15;
             this.panelValue.Visible = false;
             // 
@@ -172,7 +172,7 @@
             // 
             this.panelItem.Controls.Add(this.labelItem);
             this.panelItem.Controls.Add(this.comboBoxItem);
-            this.panelItem.Location = new System.Drawing.Point(12, 106);
+            this.panelItem.Location = new System.Drawing.Point(12, 88);
             this.panelItem.Name = "panelItem";
             this.panelItem.Size = new System.Drawing.Size(355, 43);
             this.panelItem.TabIndex = 16;
@@ -180,9 +180,9 @@
             // 
             // buttonConfirm
             // 
-            this.buttonConfirm.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.buttonConfirm.BackColor = System.Drawing.Color.Orange;
             this.buttonConfirm.Font = new System.Drawing.Font("Arial Narrow", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonConfirm.Location = new System.Drawing.Point(121, 283);
+            this.buttonConfirm.Location = new System.Drawing.Point(132, 270);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(124, 44);
             this.buttonConfirm.TabIndex = 8;
@@ -194,7 +194,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(379, 339);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.panelItem);
