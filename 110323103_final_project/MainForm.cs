@@ -112,6 +112,11 @@ namespace _110323103_final_project
 
         private void buttonRemove_Click(object sender, EventArgs e) // 刪除清單中所有被選取之項目 => 更新文字檔 => 重新讀取更新後的檔案
         {
+            if ((listBoxIntake.SelectedIndices.Count + listBoxExpenditure.SelectedIndices.Count) == 0)
+            {
+                MessageBox.Show("請選擇要刪除的項目!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             for (int i = 0; i < listBoxIntake.SelectedIndices.Count; i++)
                 ItemSelectInListBoxIntake.RemoveAt(listBoxIntake.SelectedIndices[i]);
             for (int i = 0; i < listBoxExpenditure.SelectedIndices.Count; i++)
@@ -185,20 +190,19 @@ namespace _110323103_final_project
                 MessageBox.Show("請輸入數值!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            string result = comboBoxModify.Text;
+            if (textBoxModify.Visible == true)
+                result = textBoxModify.Text;
+
             if (listBoxIntake.SelectedIndices.Count == 1)
             {
                 Intake TargetItem = (Intake)ItemSelectInListBoxIntake[listBoxIntake.SelectedIndex];
-                string result = comboBoxModify.Text;
-                if (textBoxModify.Visible == true)
-                    result = textBoxModify.Text;
                 ItemSelectInListBoxIntake[listBoxIntake.SelectedIndex] = TargetItem ^ (comboBoxSection.Text + ":" + result);
             }
             else
             {
                 Expenditure TargetItem = (Expenditure)ItemSelectInListBoxExpenditure[listBoxExpenditure.SelectedIndex];
-                string result = comboBoxModify.Text;
-                if (textBoxModify.Visible == true)
-                    result = textBoxModify.Text;
                 ItemSelectInListBoxExpenditure[listBoxExpenditure.SelectedIndex] = TargetItem ^ (comboBoxSection.Text + ":" + result);
             }
             panelModify.Visible = false;
