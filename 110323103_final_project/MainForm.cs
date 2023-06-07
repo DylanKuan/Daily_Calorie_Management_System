@@ -117,9 +117,9 @@ namespace _110323103_final_project
                 MessageBox.Show("請選擇要刪除的項目!", "錯誤", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            for (int i = 0; i < listBoxIntake.SelectedIndices.Count; i++)
+            for (int i = listBoxIntake.SelectedIndices.Count - 1; i >= 0; i--)
                 ItemSelectInListBoxIntake.RemoveAt(listBoxIntake.SelectedIndices[i]);
-            for (int i = 0; i < listBoxExpenditure.SelectedIndices.Count; i++)
+            for (int i = listBoxExpenditure.SelectedIndices.Count - 1; i >= 0; i--)
                 ItemSelectInListBoxExpenditure.RemoveAt(listBoxExpenditure.SelectedIndices[i]);
             Rewrite_File();
             LoadFile_Task(LoadFileFlag);
