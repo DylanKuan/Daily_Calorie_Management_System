@@ -1,2 +1,2 @@
-# Daily_Calorie_Management_System
+# Daily Calorie Management System
 A calorie tracking system for body management
